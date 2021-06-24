@@ -1,0 +1,12 @@
+{% extends 'anything/home.html' %}
+
+<title> {% block title %} Anything Login {% endblock %} </title>
+
+{% block content %}
+    <h3 style="text-align: center;"> User Login </h3> <br>
+    <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit", value="Login">
+    </form>
+{% endblock %}
