@@ -1,12 +1,24 @@
-{% extends 'anything/home.html' %}
+{% extends '../base.html' %}
 
 <title> {% block title %} Anything registration {% endblock %} </title>
 
 {% block content %}
     <h3 style="text-align: center;"> Registration page </h3> <br>
-    <form method="POST">
-        {% csrf_token %}
-        {{form.as_p}}
-        <input type="submit", value="SignUp">
-    </form>
+  
+    <div style="text-align: center;">
+        {% for message in messages %}
+            <h5 style="color: red;"> {{message}} </h5>
+        {% endfor %}
+
+        <form method='POST'>
+            {% csrf_token %}
+            <input type="text" name="first_name" placeholder="first name"> <br> <br>
+            <input type="text" name="last_name" placeholder="last name"> <br> <br>
+            <input type="text" name="username" placeholder="username"> <br> <br>
+            <input type="email" name="email" placeholder="email"> <br> <br>
+            <input type="password" name="password1" placeholder="password"> <br> <br>
+            <input type="password" name="password2" placeholder="confirm password"> <br> <br>
+            <input type="submit", value="SignUp"> <br>
+        </form>
+    </div>
 {% endblock %}

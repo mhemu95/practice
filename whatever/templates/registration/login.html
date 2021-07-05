@@ -4,9 +4,22 @@
 
 {% block content %}
     <h3 style="text-align: center;"> User Login </h3> <br>
-    <form method="POST">
-        {% csrf_token %}
-        {{form.as_p}}
-        <input type="submit", value="Login">
-    </form>
+    <div style="text-align: center;">
+        {% for message in messages %}
+            <h5 style="color: red;"> {{message}} </h5>
+        {% endfor %}
+
+        <form method="POST">
+            {% csrf_token %}
+            <p> Username: </p>
+            <input type="text", name="username", placeholder="enter username"> <br> <br>
+            <p> Password: </p>
+            <input type="password" name="password", placeholder="enter password"> <br> <br>
+            <input type="submit", value="Login"> <br> <br>
+        </form>
+
+        <h5>Not Registered?</h5>
+        <button> <a href=" {% url 'register' %} "> Register </a> </button>
+    </div>
+
 {% endblock %}
